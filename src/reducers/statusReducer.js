@@ -25,6 +25,9 @@ export function statusReducer(state, action)
 
             return {...state, [action.tableId]:nextStatus}
         }
+        case "RESET_TABLE_STATE":{
+            return {...state,[action.tableId]:'empty'}
+        }
         default: return state;
     }
 }

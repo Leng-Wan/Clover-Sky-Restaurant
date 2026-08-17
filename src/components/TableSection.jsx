@@ -39,6 +39,10 @@ export default function TableSection({title, tables, theme, layout})
                             :"w-14 h-14 rounded-full"
                             }`} onClick={() => dispatch({type:'ADVANCE_STATUS', tableId: table.id})}>
                                 {table.id}
+                                {currentStatus === 'bill' && <button onClick={(e)=>{
+                                    e.stopPropagation()
+                                    dispatch({type:'RESET_TABLE_STATE', tableId:table.id})
+                                }}>Reset Table</button>}
                             </div>
                         )
                         })}
