@@ -2,6 +2,7 @@ import './App.css'
 import Header from './components/Header'
 import FloorPlan from './components/FloorPlan'
 import StatusProvider from './context/StatusContext'
+import Legend from './components/Legend'
 export default function App()
 {
   return(
@@ -9,6 +10,7 @@ export default function App()
       <StatusProvider>
         <Header/>
         <FloorPlan/>
+        <Legend/>
       </StatusProvider>
     </div>
   )

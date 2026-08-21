@@ -1,4 +1,5 @@
 import { useStatus } from "../context/StatusContext"
+import statusColors from "../data/statusColor"
 export default function TableSection({title, tables, theme, layout})
 {
     const rows = {}
@@ -15,16 +16,10 @@ export default function TableSection({title, tables, theme, layout})
 
     const rowKeys = Object.keys(rows).sort((a,b)=> a-b)
     const {statusMap, dispatch} = useStatus()
-    const statusColors = {
-        empty:'bg-slate-600',
-        seated:'bg-blue-500',
-        ordered:'bg-amber-500',
-        served:'bg-emerald-500',
-        bill:'bg-violet-500'
-    }
+    
     return(
         <div>
-            <h2 className="text-white text-center">{title}</h2>
+            <h2 className="text-white text-center pb-8">{title}</h2>
             <div className={`${outerFlex} gap-4`}>
                 {rowKeys.map(rowKey => (
                     <div key={rowKey} className={`${innerFlex} gap-4`}>
