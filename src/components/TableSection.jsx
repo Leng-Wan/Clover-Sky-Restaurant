@@ -1,5 +1,6 @@
 import { useStatus } from "../context/StatusContext"
 import statusColors from "../data/statusColor"
+import alertThresholds from "../data/alertThresholds"
 
 export default function TableSection({title, tables, theme, layout, currentTime})
 {
@@ -29,6 +30,7 @@ export default function TableSection({title, tables, theme, layout, currentTime}
                             const currentStatus = tableState.status
                             const elapsedMs = currentTime - tableState.statusSince
                             const elapsedMinutes = Math.max(0,Math.floor(elapsedMs / 60000))
+                            const isOverThreshold = elapsedMinutes > alertThresholds[currentStatus]
                             return (
                                 <div
                                     key={table.id}
@@ -37,7 +39,7 @@ export default function TableSection({title, tables, theme, layout, currentTime}
                                     : table.capacity === 'large' && theme === "teal" ? "w-20 h-40 rounded-lg"
                                     : table.capacity === 'large' ? "w-20 h-14 rounded-lg"
                                     : "w-14 h-14 rounded-full"
-                                    }`}
+                                    } ${isOverThreshold ? "border-red-500 border-2":""}`}
                                     onClick={() => {
                                         if(currentStatus !== 'bill')
                                         {

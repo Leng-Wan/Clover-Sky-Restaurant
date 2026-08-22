@@ -9,7 +9,7 @@ export default function FloorPlan()
     const privateRoomSection = floorPlan.filter(table => table.section === 'private-room')
 
     useEffect(() =>{
-        const intervalId = setInterval(() => setNow(Date.now()), 30000)
+        const intervalId = setInterval(() => setNow(Date.now()), 1000)
         return () => clearInterval(intervalId)
     },[])
     return(
