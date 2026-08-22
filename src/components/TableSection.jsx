@@ -1,7 +1,7 @@
 import { useStatus } from "../context/StatusContext"
 import statusColors from "../data/statusColor"
 
-export default function TableSection({title, tables, theme, layout})
+export default function TableSection({title, tables, theme, layout, currentTime})
 {
     const rows = {}
     const groupKey = layout === 'row' ? 'y' : 'x'
@@ -25,12 +25,15 @@ export default function TableSection({title, tables, theme, layout})
                 {rowKeys.map(rowKey => (
                     <div key={rowKey} className={`${innerFlex} gap-4`}>
                         {rows[rowKey].map(table => {
-                            const currentStatus = statusMap[table.id]
+                            const tableState = statusMap[table.id]
+                            const currentStatus = tableState.status
+                            const elapsedMs = currentTime - tableState.statusSince
+                            const elapsedMinutes = Math.max(0,Math.floor(elapsedMs / 60000))
                             return (
                                 <div
                                     key={table.id}
                                     className={`text-white flex flex-col justify-center items-center cursor-pointer ${statusColors[currentStatus]}
-                                    ${currentStatus === 'bill' ? "w-24 h-24 rounded-lg"
+                                    ${currentStatus !== 'empty' ? "w-30 h-28 rounded-lg"
                                     : table.capacity === 'large' && theme === "teal" ? "w-20 h-40 rounded-lg"
                                     : table.capacity === 'large' ? "w-20 h-14 rounded-lg"
                                     : "w-14 h-14 rounded-full"
@@ -42,7 +45,12 @@ export default function TableSection({title, tables, theme, layout})
                                         }
                                     }}
                                 >
-                                    {table.id}
+                                    <div>
+                                         {table.id}
+                                    </div>
+                                    <div>
+                                         {currentStatus !== 'empty' && `${currentStatus} - ${elapsedMinutes}m ago`}
+                                    </div>
                                     {currentStatus === 'bill' && (
                                         <button
                                             className="text-sm px-2 py-1 rounded-full bg-white text-violet-600"
