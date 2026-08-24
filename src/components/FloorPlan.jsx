@@ -21,7 +21,7 @@ export default function FloorPlan()
             <TableSection title="Main Hall" tables={mainHallSection} theme="slate" layout="column" currentTime={now}></TableSection>
             <TableSection title="Private Room" tables={privateRoomSection} theme="teal" layout="column" currentTime={now}></TableSection>
         </div>
-            <div className="self-start flex flex-col gap-4 mt-44 max-w-full">
+            <div className="self-start flex flex-col gap-4 md:mt-44 max-w-full">
                 <StatsPanel currentTime={now}/>
                 <Lengend/>
             </div>
