@@ -19,7 +19,7 @@ export default function TableSection({ title, tables, theme, layout, currentTime
     const { statusMap, dispatch } = useStatus()
 
     return (
-        <div className="flex flex-col items-center bg-slate-800/50">
+        <div className="flex flex-col items-center bg-slate-800/50 p-6 rounded-xl border border-slate-700">
             <h2 className="text-white text-2xl mb-4">{title}</h2>
             <div className={`${outerFlex} gap-4`}>
                 {rowKeys.map(rowKey => (

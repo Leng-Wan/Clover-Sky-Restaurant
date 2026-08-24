@@ -11,7 +11,7 @@ export default function StatsPanel({currentTime})
     const attentionCount = Object.keys(statusMap).filter(tableId => checkIsOverThreshold(statusMap[tableId].status, statusMap[tableId].statusSince, currentTime,alertThresholds)).length
 
     return(
-        <div className="flex justify-center gap-4 text-white">
+        <div className="flex justify-center gap-4 text-white bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
             <div>Occupied: {occupiedCount}</div>
             <div>Free: {freeCount}</div>
             <div>Attention: {attentionCount}</div>

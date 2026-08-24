@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 import { floorPlan } from "../data/floorPlan";
 import TableSection from "./TableSection";
 import StatsPanel from "./StatsPanel";
+import Lengend from "./Legend";
 export default function FloorPlan()
 {
     const [now, setNow] = useState(Date.now())
@@ -15,12 +16,15 @@ export default function FloorPlan()
     },[])
     return(
        <div className="flex flex-col items-center gap-8 p-4 max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+        <div className="flex flex-col md:flex-row justify-center items-start gap-8">
             <TableSection title="Noodle Station" tables={noodleSection} theme="slate" layout="row" currentTime = {now}></TableSection>
             <TableSection title="Main Hall" tables={mainHallSection} theme="slate" layout="column" currentTime={now}></TableSection>
             <TableSection title="Private Room" tables={privateRoomSection} theme="teal" layout="column" currentTime={now}></TableSection>
         </div>
-            <StatsPanel currentTime={now}/>
+            <div className="self-start flex flex-col gap-4 mt-44">
+                <StatsPanel currentTime={now}/>
+                <Lengend/>
+            </div>
        </div>
     )
 }

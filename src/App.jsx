@@ -10,7 +10,6 @@ export default function App()
       <StatusProvider>
         <Header/>
         <FloorPlan/>
-        <Legend/>
       </StatusProvider>
     </div>
   )
