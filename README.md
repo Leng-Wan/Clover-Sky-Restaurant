@@ -1,18 +1,22 @@
-# React + Vite
+# Clover Sky - Floor Dashboard
+A real-time restaurant floor monitoring dashboard built with React — imagine sensors installed under each table, automatically tracking guest status from seating to bill.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live Demo](https://clover-sky-restaurant.vercel.app/)
 
-Currently, two official plugins are available:
+## Features
+- 19-table floor map across 3 restaurant sections
+- Click-to-cycle status tracking (empty → seated → ordered → served → bill)
+- Real-time elapsed-time timers per table
+- Track which table is required attention by looking at the red border
+- Legend label for non-tech user friendly
+- Total number of tables, total occupied tables and total attention tables
+- Simulate tables just by pressing start/stop button instead of manual click
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack + Architecture Note 
+Rather than passing props through multiple layers of components (prop drilling), status data is managed globally using React's Context API paired with useReducer — allowing any component to read or update table status directly, regardless of its position in the component tree.
 
-## React Compiler
+- React + React DOM
+- Vite
+- Tailwind css
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
-https://clover-sky-restaurant.vercel.app/
+![Clover Sky Dashboard Screenshot](./screenshot/dashboard.png)
