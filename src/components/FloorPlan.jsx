@@ -3,6 +3,8 @@ import { floorPlan } from "../data/floorPlan";
 import TableSection from "./TableSection";
 import StatsPanel from "./StatsPanel";
 import Lengend from "./Legend";
+import SimulatorToggle from "./SimulatorToggle";
+
 export default function FloorPlan()
 {
     const [now, setNow] = useState(Date.now())
@@ -20,6 +22,7 @@ export default function FloorPlan()
             <TableSection title="Noodle Station" tables={noodleSection} theme="slate" layout="row" currentTime = {now}></TableSection>
             <TableSection title="Main Hall" tables={mainHallSection} theme="slate" layout="column" currentTime={now}></TableSection>
             <TableSection title="Private Room" tables={privateRoomSection} theme="teal" layout="column" currentTime={now}></TableSection>
+            <SimulatorToggle/>
         </div>
             <div className="self-start flex flex-col gap-4 md:mt-44 max-w-full">
                 <StatsPanel currentTime={now}/>
