@@ -2,7 +2,7 @@ import { useStatus } from "../context/StatusContext"
 import statusColors from "../data/statusColor"
 import alertThresholds from "../data/alertThresholds"
 import checkIsOverThreshold from "../utils/alertUtils"
-
+import { getNextStatus } from "../reducers/statusReducer"
 export default function TableSection({ title, tables, theme, layout, currentTime }) {
     const rows = {}
     const groupKey = layout === 'row' ? 'y' : 'x'
@@ -42,6 +42,12 @@ export default function TableSection({ title, tables, theme, layout, currentTime
                                     onClick={() => {
                                         if (currentStatus !== 'bill') {
                                             dispatch({ type: 'ADVANCE_STATUS', tableId: table.id })
+                                            const nextStatus = getNextStatus(currentStatus)
+                                            fetch(`http://localhost:3000/tables/${table.id}/status`,{
+                                                method:'POST',
+                                                headers:{"Content-Type":"application/json"},
+                                                body:JSON.stringify({'newStatus':nextStatus})
+                                            })
                                         }
                                     }}
                                 >
