@@ -1,5 +1,6 @@
 import {statusReducer } from "../reducers/statusReducer";
 import { useReducer, createContext, useContext, useEffect,useState } from "react";
+import.meta.env 
 
 const StatusContext = createContext()
 export default function StatusProvider({children})
@@ -9,7 +10,7 @@ export default function StatusProvider({children})
     useEffect(() =>{
             async function FetchingDataFromAPI()
             {
-                const res = await fetch("http://localhost:3000/tables")
+                const res = await fetch(`${import.meta.env.VITE_API_ADDRESS}/tables`)
                 const data = await res.json()
                 dispatch({type:"INIT_STATUS", tables:data})
                 setIsLoading(false)

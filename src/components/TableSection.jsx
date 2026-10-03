@@ -3,6 +3,7 @@ import statusColors from "../data/statusColor"
 import alertThresholds from "../data/alertThresholds"
 import checkIsOverThreshold from "../utils/alertUtils"
 import { getNextStatus } from "../reducers/statusReducer"
+import.meta.env
 export default function TableSection({ title, tables, theme, layout, currentTime }) {
     const rows = {}
     const groupKey = layout === 'row' ? 'y' : 'x'
@@ -43,7 +44,7 @@ export default function TableSection({ title, tables, theme, layout, currentTime
                                         if (currentStatus !== 'bill') {
                                             dispatch({ type: 'ADVANCE_STATUS', tableId: table.id })
                                             const nextStatus = getNextStatus(currentStatus)
-                                            fetch(`http://localhost:3000/tables/${table.id}/status`,{
+                                            fetch(`${import.meta.env.VITE_API_ADDRESS}/tables/${table.id}/status`,{
                                                 method:'POST',
                                                 headers:{"Content-Type":"application/json"},
                                                 body:JSON.stringify({'newStatus':nextStatus})
