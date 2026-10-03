@@ -16,6 +16,9 @@ export default function FloorPlan()
         const intervalId = setInterval(() => setNow(Date.now()), 1000)
         return () => clearInterval(intervalId)
     },[])
+
+   
+   
     return(
        <div className="flex flex-col items-center gap-8 p-4 max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-center items-start gap-8">
